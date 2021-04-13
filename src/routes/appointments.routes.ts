@@ -7,9 +7,9 @@ import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
 
-appointmentsRouter.get('/appointments', (req, res) => {
+appointmentsRouter.get('/appointments', async (req, res) => {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
-    const appointments = appointmentsRepository.find();
+    const appointments = await appointmentsRepository.find();
     return res.json(appointments);
 });
 
