@@ -7,13 +7,13 @@ import CreateAppointmentService from '../services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
 
-appointmentsRouter.get('/appointments', async (req, res) => {
+appointmentsRouter.get('/', async (req, res) => {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
     const appointments = await appointmentsRepository.find();
     return res.json(appointments);
 });
 
-appointmentsRouter.post('/appointments', async (req, res) => {
+appointmentsRouter.post('/', async (req, res) => {
     try {
         const { provider, date } = req.body;
         const parseDate = parseISO(date);

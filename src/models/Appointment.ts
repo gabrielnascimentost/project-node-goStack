@@ -30,11 +30,11 @@ class Appointment {
 
     @CreateDateColumn()
     // eslint-disable-next-line camelcase
-    created_at: Date;
+    create_at: Date;
 
     @UpdateDateColumn()
     // eslint-disable-next-line camelcase
-    updated_at: Date;
+    update_up: Date;
 }
 
 export default Appointment;
