@@ -1,10 +1,22 @@
 import { Router } from 'express';
+import CreateUserService from '../services/CreateUserService';
 
 const usersRouter = Router();
 
 usersRouter.post('/', async (req, res) => {
     try {
-        return res.send();
+        const { name, email, password } = req.body;
+        const createUser = new CreateUserService();
+        const user = await createUser.execute({
+            name,
+            email,
+            password,
+        });
+
+        // @ts-expect-error 
+        delete user.password;
+
+        return res.json(user);
     } catch (err) {
         return res.status(400).json({ error: err.message });
     }
