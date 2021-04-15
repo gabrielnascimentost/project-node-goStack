@@ -13,7 +13,7 @@ usersRouter.post('/', async (req, res) => {
             password,
         });
 
-        // @ts-expect-error 
+        // @ts-expect-error ignorando erro de interface
         delete user.password;
 
         return res.json(user);
