@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import multer from 'multer';
-import uploadConfig from '../config/upload';
+import uploadConfig from '../../config/upload';
 
-import CreateUserService from '../services/CreateUserService';
+import CreateUserService from '../../modules/users/services/CreateUserService';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
-import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
+import UpdateUserAvatarService from '../../modules/users/services/UpdateUserAvatarService';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
@@ -17,8 +17,6 @@ usersRouter.post('/', async (req, res) => {
         email,
         password,
     });
-
-    // @ts-expect-error ignorando erro de interface
     delete user.password;
 
     return res.json(user);
@@ -34,8 +32,6 @@ usersRouter.patch(
             user_id: req.user.id,
             avatarFilename: req.file.filename,
         });
-
-        // @ts-expect-error ignorando erro de interface
         delete user.password;
 
         return res.json(user);
