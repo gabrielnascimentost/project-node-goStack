@@ -12,8 +12,8 @@ class UserToken {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
     @Generated('uuid')
+    @Column()
     token: string;
 
     @Column()
