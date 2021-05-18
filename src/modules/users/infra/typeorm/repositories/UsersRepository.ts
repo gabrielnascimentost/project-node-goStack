@@ -1,9 +1,7 @@
-/* eslint-disable camelcase */
+import User from '@modules/users/infra/typeorm/entities/User';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IUserRepository from '@modules/users/repositories/IUsersRepository';
 import { getRepository, Repository } from 'typeorm';
-
-import User from '../entities/User';
 
 class UsersRepository implements IUserRepository {
     private ormRepository: Repository<User>;
