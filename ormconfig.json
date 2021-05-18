@@ -4,7 +4,7 @@
     "port": 5432,
     "username": "userdev",
     "password": "userdev",
-    "database": "gostack_gobarber",
+    "database": "goBarber",
     "entities": [
         "./src/models/**/infra/typeorm/entities/*.ts"
     ],
