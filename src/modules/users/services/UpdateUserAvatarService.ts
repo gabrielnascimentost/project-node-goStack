@@ -4,7 +4,6 @@ import IStorageProvider from '@shared/container/providers/StorageProvider/models
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 
-/* eslint-disable camelcase */
 interface IRequest {
     user_id: string;
     avatarFilename: string;
@@ -13,7 +12,7 @@ interface IRequest {
 @injectable()
 class UpdateUserAvatarService {
     constructor(
-        @inject('UserRepository')
+        @inject('UsersRepository')
         private usersRepository: IUsersRepository,
 
         @inject('StorageProvider')

@@ -1,7 +1,7 @@
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
-import IUserRepository from '../repositories/IUsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 import IUserTokensRepository from '../repositories/IUserTokenRepository';
 
 interface IRequest {
@@ -11,8 +11,8 @@ interface IRequest {
 @injectable()
 class SendForgotPasswordEmailService {
     constructor(
-        @inject('UserRepository')
-        private usersRepository: IUserRepository,
+        @inject('UsersRepository')
+        private usersRepository: IUsersRepository,
 
         @inject('MailProvider')
         private mailProvider: IMailProvider,
