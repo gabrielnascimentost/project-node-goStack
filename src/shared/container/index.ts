@@ -3,6 +3,7 @@ import IAppointmentsRepository from '@modules/appointments/repositories/IAppoint
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import './providers';
+import '@modules/users/providers';
 import { container } from 'tsyringe';
 import IUserTokensRepository from '@modules/users/repositories/IUserTokenRepository';
 import UserTokensRepository from '@modules/users/infra/typeorm/repositories/UserTokensRepository';
