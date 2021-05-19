@@ -8,6 +8,7 @@ class ProfileController {
         const { id: user_id } = request.user;
         const showProfile = container.resolve(ShowProfileService);
         const user = await showProfile.execute({ user_id });
+        delete user.password;
         return response.status(200).json(user);
     }
 
