@@ -6,6 +6,7 @@ import '@shared/infra/typeorm';
 import '@shared/container';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
+import { errors } from 'celebrate';
 import routes from './routes';
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
+// Celebrate errors
+app.use(errors());
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
     if (err instanceof AppError) {
@@ -25,7 +28,7 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
 
     return res.status(500).json({
         status: 'error',
-        message: err.message,
+        message: 'Internal Server Error',
     });
 });
 
