@@ -35,7 +35,7 @@ class UpdateProfileService {
         name,
         email,
         password,
-        old_password: oldPassword,
+        old_password,
     }: IRequest): Promise<User | undefined> {
         const user = await this.usersRepository.findById(user_id);
 
@@ -53,15 +53,15 @@ class UpdateProfileService {
 
         Object.assign(user, { name, email });
 
-        if (password && !oldPassword) {
+        if (password && !old_password) {
             throw new AppError(
                 'You need to send the old password to create a new.',
             );
         }
 
-        if (password && oldPassword) {
+        if (password && old_password) {
             const validOldPassword = await this.hashProvider.compareHash(
-                oldPassword,
+                old_password,
                 user.password,
             );
 

@@ -20,12 +20,12 @@ profileRouter.put(
         [Segments.BODY]: {
             name: Joi.string().required(),
             email: Joi.string().required(),
-            oldPassword: Joi.string(),
-            password: Joi.string().when('oldPassword', {
+            old_password: Joi.string(),
+            password: Joi.string().when('old_password', {
                 is: String,
                 then: Joi.string().required(),
             }),
-            passwordConfirmation: Joi.string().when('oldPassword', {
+            passwordConfirmation: Joi.string().when('old_password', {
                 is: String,
                 then: Joi.string().required().valid(Joi.ref('password')),
             }),
